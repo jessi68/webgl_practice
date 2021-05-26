@@ -1,4 +1,5 @@
 import React from 'react';
+import YouTube from 'react-youtube';
 import {Video} from '../components/domain/Video'
 import {VideoRepository} from '../components/domain/VideoRepository'
 
@@ -7,7 +8,7 @@ class VideosView extends React.Component{
     constructor(props) {
         super(props)
         this.videoRepository = new VideoRepository();
-        this.videoRepository.addVideo(new  Video("https://www.youtube.com/embed/Ngj3498Tm_0", "무드등", "makerJoon", "2021-03-21"));
+        this.videoRepository.addVideo(new Video("2E1ki61rVvE", "무드등", "makerJoon", "2021-03-21"));
     }
  
   //   <main class="mt-10">
@@ -33,14 +34,10 @@ class VideosView extends React.Component{
            return  <div class="content-container">
            <h3>{video.title}</h3>
            <div>
-           <iframe
-            width="100%"
-            height="118"
-            src={video.url}
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+           <YouTube
+            videoId={video.id}
+            onReady={true}
+          ></YouTube>
              <div class="meta">
                <p>{video.producer}</p>
              </div>
